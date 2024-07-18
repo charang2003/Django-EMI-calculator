@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EMI Calculator</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'calculator/css/styles.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{% static 'calculator/js/scripts.js' %}"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: #d63ea1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 10px;
+            animation: slideIn 1s ease-out;
+            width: 100%;
+            max-width: 500px;
+        }
+        .card-header {
+            background: linear-gradient(135deg, #0072ff, #00c6ff);
+        }
+        .form-control {
+            border-radius: 30px;
+            transition: transform 0.3s ease;
+        }
+        .form-control:focus {
+            transform: scale(1.05);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #0072ff, #00c6ff);
+            border-radius: 30px;
+            transition: background 0.3s ease;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+        }
+        #result {
+            animation: popUp 0.5s ease-in-out;
+        }
+        footer {
+            color: #fff;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(100px); }
+            to { transform: translateY(0); }
+        }
+        @keyframes popUp {
+            from { transform: scale(0); }
+            to { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card shadow-lg">
+            <div class="card-header text-center text-white">
+                <h1>EMI Calculator</h1>
+            </div>
+            <div class="card-body">
+                <form id="emiForm">
+                    <div class="form-group">
+                        <label for="principal">Principal Amount:</label>
+                        <input type="number" class="form-control" id="principal" name="principal" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="rate">Annual Interest Rate (%):</label>
+                        <input type="number" class="form-control" id="rate" name="rate" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Time Period (months):</label>
+                        <input type="number" class="form-control" id="time" name="time" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Calculate EMI</button>
+                </form>
+                <div id="result" class="mt-4 alert alert-info text-center" style="display: none;"></div>
+            </div>
+        </div>
+        <footer class="text-center mt-4">
+            <p>Developed by Nikith S (1JT21CS067) &copy; 2024</p>
+        </footer>
+    </div>
+</body>
+</html>
